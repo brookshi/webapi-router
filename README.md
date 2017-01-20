@@ -9,7 +9,7 @@ Also, use decorator `@GET(path)` can indicate the router path directly.
 Support `@GET`, `@POST`, `@DELETE`, `@PUT`.
 
 ## Usage
-### 1. set controller folder and restful api prefix.
+### 1. set folder of controllers and restful api prefix in index.ts/js.
 ```ts
 import { WebApiRouter } from '../lib/index';
 
@@ -17,12 +17,12 @@ app.use(new WebApiRouter().router('sample/controllers', 'api'));
 ```
 ### 2. add controller base on BaseController
 ```ts
-export class TestController: BaseController
+export class TestController extends BaseController
 {
-    
+
 }
 ```
-### 3. add decorator for api method
+### 3. add decorator for function
 ```ts
 ///:name is a path param, get it in arguments by using @PathParam
 /// get body by using @BodyParam
