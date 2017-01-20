@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "env": { "NODE_ENV": "development" },
+            "name": "run",
+            "outDir": "${workspaceRoot}/bin",
+            "program": "${workspaceRoot}/bin/sample/index.js",
+            "runtimeArgs": ["--nolazy"],
+            "sourceMaps": true,
+            "stopOnEntry": false
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "attach to process",
+            "port": 5858,
+            "outFiles": [],
+            "sourceMaps": true
+        }
+    ]
+}
