@@ -1,5 +1,3 @@
-abstract class baseController{
+export abstract class baseController{
 
 }
-
-export default baseController;

@@ -5,8 +5,11 @@ import * as Koa from 'koa';
 import * as FileUtil from './fileutil';
 import { Router } from './decorators';
 import { ParamType } from './paramType';
-import baseController from './baseController';
+import { baseController } from './baseController';
 import 'reflect-metadata';
+
+export * from './baseController';
+export * from './decorators';
 
 export class WebApiRouter {
     

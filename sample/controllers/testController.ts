@@ -1,4 +1,4 @@
-import baseController from '../../lib/baseController';
+import { baseController } from '../../lib/index';
 import { GET, POST, DELETE, PUT, PathParam, QueryParam, BodyParam } from '../../lib/decorators';
 
 export default class TestController extends baseController{

@@ -19,9 +19,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments)).next());
     });
 };
-const baseController_1 = require("../../lib/baseController");
+const index_1 = require("../../lib/index");
 const decorators_1 = require("../../lib/decorators");
-class TestController extends baseController_1.default {
+class TestController extends index_1.baseController {
     get() {
         console.info('TestController - get');
         return 'get';

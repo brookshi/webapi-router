@@ -7,6 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments)).next());
     });
 };
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 const Path = require("path");
 const KoaRouter = require("koa-router");
 const FileUtil = require("./fileutil");
@@ -14,6 +17,8 @@ const decorators_1 = require("./decorators");
 const paramType_1 = require("./paramType");
 const baseController_1 = require("./baseController");
 require("reflect-metadata");
+__export(require("./baseController"));
+__export(require("./decorators"));
 class WebApiRouter {
     constructor() {
     }
@@ -34,7 +39,7 @@ class WebApiRouter {
         });
     }
     isAvalidController(exportClass) {
-        return Reflect.getPrototypeOf(exportClass) == baseController_1.default;
+        return Reflect.getPrototypeOf(exportClass) == baseController_1.baseController;
     }
     setRouterForClass(exportClass, file) {
         let controllerRouterPath = this.buildControllerRouter(file);
