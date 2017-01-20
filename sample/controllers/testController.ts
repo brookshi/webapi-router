@@ -1,7 +1,7 @@
-import { baseController } from '../../lib/index';
+import { BaseController } from '../../lib/index';
 import { GET, POST, DELETE, PUT, PathParam, QueryParam, BodyParam } from '../../lib/decorators';
 
-export default class TestController extends baseController{
+export default class TestController extends BaseController{
 
     @GET()
     get(): string{

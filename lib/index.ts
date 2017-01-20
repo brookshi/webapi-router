@@ -5,7 +5,7 @@ import * as Koa from 'koa';
 import * as FileUtil from './fileutil';
 import { Router } from './decorators';
 import { ParamType } from './paramType';
-import { baseController } from './baseController';
+import { BaseController } from './baseController';
 import 'reflect-metadata';
 
 export * from './baseController';
@@ -41,7 +41,7 @@ export class WebApiRouter {
     }
 
     private isAvalidController(exportClass: any){
-        return Reflect.getPrototypeOf(exportClass) == baseController;
+        return Reflect.getPrototypeOf(exportClass) == BaseController;
     }
 
     private setRouterForClass(exportClass: any, file: string) { 

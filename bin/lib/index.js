@@ -39,7 +39,7 @@ class WebApiRouter {
         });
     }
     isAvalidController(exportClass) {
-        return Reflect.getPrototypeOf(exportClass) == baseController_1.baseController;
+        return Reflect.getPrototypeOf(exportClass) == baseController_1.BaseController;
     }
     setRouterForClass(exportClass, file) {
         let controllerRouterPath = this.buildControllerRouter(file);

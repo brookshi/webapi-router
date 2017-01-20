@@ -1,2 +1,2 @@
-export declare abstract class baseController {
+export declare abstract class BaseController {
 }

@@ -1,5 +1,5 @@
 "use strict";
-class baseController {
+class BaseController {
 }
-exports.baseController = baseController;
+exports.BaseController = BaseController;
 //# sourceMappingURL=baseController.js.map

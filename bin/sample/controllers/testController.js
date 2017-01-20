@@ -21,7 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const index_1 = require("../../lib/index");
 const decorators_1 = require("../../lib/decorators");
-class TestController extends index_1.baseController {
+class TestController extends index_1.BaseController {
     get() {
         console.info('TestController - get');
         return 'get';
