@@ -1,4 +1,4 @@
-import baseController from './baseController';
+import { BaseController } from './baseController';
 import { ParamType } from "./paramType";
 import 'reflect-metadata';
 
@@ -6,45 +6,45 @@ const Router = Symbol();
 export { Router }; 
 
 export function GET(path?: string) {
-    return (target: baseController, name: string) => setMethodDecorator(target, name, 'GET', path);
+    return (target: BaseController, name: string) => setMethodDecorator(target, name, 'GET', path);
 } 
 
 export function POST(path?: string) {
-    return (target: baseController, name: string) => setMethodDecorator(target, name, 'POST', path);
+    return (target: BaseController, name: string) => setMethodDecorator(target, name, 'POST', path);
 }
 
 export function DELETE(path?: string) {
-    return (target: baseController, name: string) => setMethodDecorator(target, name, 'DELETE', path);
+    return (target: BaseController, name: string) => setMethodDecorator(target, name, 'DELETE', path);
 }
 
 export function PUT(path?: string) {
-    return (target: baseController, name: string) => setMethodDecorator(target, name, 'PUT', path);
+    return (target: BaseController, name: string) => setMethodDecorator(target, name, 'PUT', path);
 }
 
 export function QueryParam(param: string) {
-    return (target: baseController, name: string, index: number) => {
+    return (target: BaseController, name: string, index: number) => {
         setParamDecorator(target, name, index, { name: param, type: ParamType.Query });
     };
 }
 
 export function PathParam(param: string) {
-    return (target: baseController, name: string, index: number) => {
+    return (target: BaseController, name: string, index: number) => {
         setParamDecorator(target, name, index, { name: param, type: ParamType.Path });
     }
 }
 
-export function BodyParam(target: baseController, name: string, index: number) {
+export function BodyParam(target: BaseController, name: string, index: number) {
     setParamDecorator(target, name, index, { name: "", type: ParamType.Body });
 }
 
-function setMethodDecorator(target: baseController, name: string, method: string, path?: string){
+function setMethodDecorator(target: BaseController, name: string, method: string, path?: string){
     target[Router] = target[Router] || {};
     target[Router][name] = target[Router][name] || {};
     target[Router][name].method = method;
     target[Router][name].path = path;
 }
 
-function setParamDecorator(target: baseController, name: string, index: number, value: {name: string, type: ParamType}) {
+function setParamDecorator(target: BaseController, name: string, index: number, value: {name: string, type: ParamType}) {
     let paramTypes = Reflect.getMetadata("design:paramtypes", target, name);
     target[Router] = target[Router] || {};
     target[Router][name] = target[Router][name] || {};
