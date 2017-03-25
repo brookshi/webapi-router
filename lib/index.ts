@@ -12,7 +12,7 @@ export * from './baseController';
 export * from './decorators';
 
 export class WebApiRouter {
-    
+
     controllerFolder: string;
     urlPrefix: string;
     koaRouter: KoaRouter;
@@ -34,57 +34,58 @@ export class WebApiRouter {
         let files = FileUtil.getFiles(this.controllerFolder);
         files.forEach(file => {
             let exportClass = require(file).default;
-            if(this.isAvalidController(exportClass)){
+            if (this.isAvalidController(exportClass)) {
                 this.setRouterForClass(exportClass, file);
             }
         });
     }
 
-    private isAvalidController(exportClass: any){
+    private isAvalidController(exportClass: any) {
         return Reflect.getPrototypeOf(exportClass) == BaseController;
     }
 
-    private setRouterForClass(exportClass: any, file: string) { 
+    private setRouterForClass(exportClass: any, file: string) {
         let controllerRouterPath = this.buildControllerRouter(file);
         let controller = new exportClass();
-        for(let funcName in exportClass.prototype[Router]){
+        for (let funcName in exportClass.prototype[Router]) {
             let method = exportClass.prototype[Router][funcName].method.toLowerCase();
             let path = exportClass.prototype[Router][funcName].path;
-            this.setRouterForFunction(method, controller, funcName,  path ? `/${this.urlPrefix}${path}` : `/${this.urlPrefix}${controllerRouterPath}/${funcName}`);
+            this.setRouterForFunction(method, controller, funcName, path ? `/${this.urlPrefix}${path}` : `/${this.urlPrefix}${controllerRouterPath}/${funcName}`);
         }
     }
 
-    private buildControllerRouter(file: string){
+    private buildControllerRouter(file: string) {
         let relativeFile = Path.relative(Path.join(FileUtil.getApiDir(), this.controllerFolder), file);
-        let controllerPath = '/' + relativeFile.replace(/\\/g, '/').replace('.js','').toLowerCase();
-        if(controllerPath.endsWith('controller'))
+        let controllerPath = '/' + relativeFile.replace(/\\/g, '/').replace('.js', '').toLowerCase();
+        if (controllerPath.endsWith('controller')) {
             controllerPath = controllerPath.substring(0, controllerPath.length - 10);
+        }
+        if (controllerPath.endsWith('_') || controllerPath.endsWith('-')) {
+            controllerPath = controllerPath.substring(0, controllerPath.length - 1);
+        }
         return controllerPath;
     }
 
-    private setRouterForFunction(method: string, controller: any, funcName: string, routerPath: string){
+    private setRouterForFunction(method: string, controller: any, funcName: string, routerPath: string) {
         this.koaRouter[method](routerPath, async (ctx, next) => { await this.execApi(ctx, next, controller, funcName) });
     }
 
-    private async execApi(ctx: Koa.Context, next: Function, controller: any, funcName: string) : Promise<void> {
-        try
-        {
+    private async execApi(ctx: Koa.Context, next: Function, controller: any, funcName: string): Promise<void> {
+        try {
             ctx.body = await controller[funcName](...this.buildFuncParams(ctx, controller, controller[funcName]));
         }
-        catch(err)
-        {
-           console.error(err);
-           next(); 
+        catch (err) {
+            console.error(err);
+            next();
         }
     }
 
     private buildFuncParams(ctx: any, controller: any, func: Function) {
         let paramsInfo = controller[Router][func.name].params;
         let params = [];
-        if(paramsInfo)
-        {
-            for(let i = 0; i < paramsInfo.length; i++) {
-                if(paramsInfo[i]){
+        if (paramsInfo) {
+            for (let i = 0; i < paramsInfo.length; i++) {
+                if (paramsInfo[i]) {
                     params.push(paramsInfo[i].type(this.getParam(ctx, paramsInfo[i].paramType, paramsInfo[i].name)));
                 } else {
                     params.push(ctx);
@@ -94,8 +95,8 @@ export class WebApiRouter {
         return params;
     }
 
-    private getParam(ctx: any, paramType: ParamType, name: string){
-        switch(paramType){
+    private getParam(ctx: any, paramType: ParamType, name: string) {
+        switch (paramType) {
             case ParamType.Query:
                 return ctx.query[name];
             case ParamType.Path:

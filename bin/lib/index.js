@@ -53,8 +53,12 @@ class WebApiRouter {
     buildControllerRouter(file) {
         let relativeFile = Path.relative(Path.join(FileUtil.getApiDir(), this.controllerFolder), file);
         let controllerPath = '/' + relativeFile.replace(/\\/g, '/').replace('.js', '').toLowerCase();
-        if (controllerPath.endsWith('controller'))
+        if (controllerPath.endsWith('controller')) {
             controllerPath = controllerPath.substring(0, controllerPath.length - 10);
+        }
+        if (controllerPath.endsWith('_') || controllerPath.endsWith('-')) {
+            controllerPath = controllerPath.substring(0, controllerPath.length - 1);
+        }
         return controllerPath;
     }
     setRouterForFunction(method, controller, funcName, routerPath) {
