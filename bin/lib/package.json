@@ -1,6 +1,6 @@
 {
   "name": "webapi-router",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "description": "nodejs restful router like WebApi based on Koa",
   "main": "index.js",
   "scripts": {

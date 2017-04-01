@@ -21,8 +21,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const index_1 = require("../../lib/index");
 const decorators_1 = require("../../lib/decorators");
+const Koa = require("koa");
 class TestController extends index_1.BaseController {
-    get() {
+    get(ctx) {
         console.info('TestController - get');
         return 'get';
     }
@@ -68,7 +69,7 @@ class TestController extends index_1.BaseController {
 __decorate([
     decorators_1.GET(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [typeof (_a = (typeof Koa !== "undefined" && Koa).Context) === "function" && _a || Object]),
     __metadata("design:returntype", String)
 ], TestController.prototype, "get", null);
 __decorate([
@@ -127,4 +128,5 @@ __decorate([
 ], TestController.prototype, "put", null);
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = TestController;
+var _a;
 //# sourceMappingURL=testController.js.map

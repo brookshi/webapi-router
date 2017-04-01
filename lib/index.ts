@@ -92,6 +92,9 @@ export class WebApiRouter {
                 }
             }
         }
+        if (params.length === 0) {
+            params.push(ctx);
+        }
         return params;
     }
 
