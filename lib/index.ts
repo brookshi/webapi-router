@@ -76,7 +76,7 @@ export class WebApiRouter {
         }
         catch (err) {
             console.error(err);
-            next();
+            throw err;
         }
     }
 
