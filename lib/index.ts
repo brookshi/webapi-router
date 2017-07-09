@@ -72,7 +72,10 @@ export class WebApiRouter {
 
     private async execApi(ctx: Koa.Context, next: Function, controller: any, funcName: string): Promise<void> {
         try {
-            ctx.body = await controller[funcName](...this.buildFuncParams(ctx, controller, controller[funcName]));
+            const result = await controller[funcName](...this.buildFuncParams(ctx, controller, controller[funcName]));
+            if (!!result) {
+                ctx.body = result;
+            }
         }
         catch (err) {
             console.error(err);

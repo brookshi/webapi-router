@@ -67,11 +67,14 @@ class WebApiRouter {
     execApi(ctx, next, controller, funcName) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                ctx.body = yield controller[funcName](...this.buildFuncParams(ctx, controller, controller[funcName]));
+                const result = yield controller[funcName](...this.buildFuncParams(ctx, controller, controller[funcName]));
+                if (!!result) {
+                    ctx.body = result;
+                }
             }
             catch (err) {
                 console.error(err);
-                next();
+                throw err;
             }
         });
     }

@@ -5,7 +5,7 @@
         "module": "commonjs",
         "target": "ES6",
         "outDir": "bin",
-        "rootDir": "api",
+        "rootDir": "lib",
         "sourceMap": true,
         "watch": true
     }
