@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Koa = require("koa");
 const Bodyparser = require("koa-bodyparser");
 const index_1 = require("../lib/index");

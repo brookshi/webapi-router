@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ParamType;
 (function (ParamType) {
     ParamType[ParamType["Query"] = 0] = "Query";

@@ -16,9 +16,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments)).next());
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../../lib/index");
 const decorators_1 = require("../../lib/decorators");
 const Koa = require("koa");
@@ -126,7 +127,6 @@ __decorate([
     __metadata("design:paramtypes", [Number, String, Object]),
     __metadata("design:returntype", void 0)
 ], TestController.prototype, "put", null);
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = TestController;
 var _a;
 //# sourceMappingURL=testController.js.map

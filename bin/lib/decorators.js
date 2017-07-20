@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const paramType_1 = require("./paramType");
 require("reflect-metadata");
 const Router = Symbol();

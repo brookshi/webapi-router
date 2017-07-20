@@ -2,7 +2,7 @@ import * as Path from 'path';
 import * as FS from 'fs';
 import * as KoaRouter from 'koa-router';
 import * as Koa from 'koa';
-import * as FileUtil from './fileutil';
+import * as FileUtil from './fileUtil';
 import { Router } from './decorators';
 import { ParamType } from './paramType';
 import { BaseController } from './baseController';
