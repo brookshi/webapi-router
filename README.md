@@ -1,4 +1,6 @@
 # webapi-router
+![](https://badge.fury.io/js/webapi-router.svg)
+
 create restful api application with the same feeling of Asp.Net WebApi
 
 ## Feature
