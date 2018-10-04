@@ -7,10 +7,9 @@ let app = new Koa();
 
 app.use(Bodyparser());
 
-app.use(new WebApiRouter().router('sample/controllers', 'api'));
+app.use(new WebApiRouter().router('test/controllers', 'api'));
 
-app.use(ctx=>
-{
+app.use(ctx => {
     ctx.body = "welcome to WebApi-Router"
 });
 

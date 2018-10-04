@@ -37,3 +37,15 @@ jspm_packages
 .node_repl_history
 
 bin
+bin/test
+bin/sample
+bin/lib/baseController.js
+bin/lib/fileUtil.js
+bin/lib/baseController.js.map
+bin/lib/decorators.js
+bin/lib/decorators.js.map
+bin/lib/fileUtil.js.map
+bin/lib/index.js
+bin/lib/index.js.map
+bin/lib/paramType.js
+bin/lib/paramType.js.map
