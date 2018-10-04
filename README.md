@@ -6,7 +6,7 @@ Dont need write the annoying koa.use(...). Instead, webapi-router will auto use 
 
 Also, use decorator `@GET(path)` can indicate the router path directly.
 
-Support `@GET`, `@POST`, `@DELETE`, `@PUT`.
+Support `@GET`, `@POST`, `@DELETE`, `@PUT`, `@OPTIONS`, `@HEAD`, `@PATCH`.
 
 ## Usage
 ### 1. set folder of controllers and restful api prefix in index.ts/js.
